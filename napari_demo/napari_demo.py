@@ -26,13 +26,29 @@ class Operation(enum.Enum):
 # the full layer instance
 @napari_hook_implementation
 def napari_experimental_provide_function():
-    return image_arithmetic
+    return [add, subtract, multiply, multiply]
 
 
-def image_arithmetic(
+def add(
     layerA: 'napari.types.ImageData',
-    operation: Operation,
     layerB: 'napari.types.ImageData',
 ) -> 'napari.types.ImageData':
-    """Adds, subtracts, multiplies, or divides two same-shaped image layers."""
-    return operation.value(layerA, layerB)
+    return np.add(layerA, layerB)
+
+def subtract(
+    layerA: 'napari.types.ImageData',
+    layerB: 'napari.types.ImageData',
+) -> 'napari.types.ImageData':
+    return np.subtract(layerA, layerB)
+
+def multiply(
+    layerA: 'napari.types.ImageData',
+    layerB: 'napari.types.ImageData',
+) -> 'napari.types.ImageData':
+    return np.multiply(layerA, layerB)
+
+def divide(
+    layerA: 'napari.types.ImageData',
+    layerB: 'napari.types.ImageData',
+) -> 'napari.types.ImageData':
+    return np.divide(layerA, layerB)
