@@ -25,7 +25,7 @@ class Operation(enum.Enum):
 # which means our function will be passed layer.data instead of
 # the full layer instance
 @napari_hook_implementation
-def napari_experimental_provide_function():
+def napari_experimental_function():
     return image_arithmetic
 
 
